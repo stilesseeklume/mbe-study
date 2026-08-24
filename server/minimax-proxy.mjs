@@ -2,7 +2,7 @@ import http from 'node:http';
 
 const apiKey = process.env.MINIMAX_API_KEY;
 const allowedOrigin = process.env.ALLOWED_ORIGIN || 'https://stilesseeklume.github.io';
-const port = Number(process.env.PORT || 8787);
+const port = Number(process.env.PORT || 9000);
 const models = new Set(['speech-2.8-turbo', 'speech-2.8-hd']);
 
 function json(res, status, value) {
@@ -15,6 +15,11 @@ function json(res, status, value) {
 }
 
 const server = http.createServer(async (req, res) => {
+  const requestOrigin = req.headers.origin;
+  if (requestOrigin && requestOrigin !== allowedOrigin) {
+    return json(res, 403, { error: 'Origin is not allowed' });
+  }
+
   if (req.method === 'OPTIONS') {
     res.writeHead(204, {
       'Access-Control-Allow-Origin': allowedOrigin,
@@ -23,6 +28,9 @@ const server = http.createServer(async (req, res) => {
       'Access-Control-Max-Age': '86400',
     });
     return res.end();
+  }
+  if (req.method === 'GET' && req.url === '/health') {
+    return json(res, 200, { ok: true, provider: 'MiniMax', apiKeyConfigured: Boolean(apiKey) });
   }
   if (req.method !== 'POST' || req.url !== '/tts') return json(res, 404, { error: 'Not found' });
   if (!apiKey) return json(res, 503, { error: 'MINIMAX_API_KEY is not configured' });
