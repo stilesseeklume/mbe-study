@@ -16,7 +16,7 @@ function json(res, status, value) {
 
 const server = http.createServer(async (req, res) => {
   const requestOrigin = req.headers.origin;
-  if (requestOrigin && requestOrigin !== allowedOrigin) {
+  if ((req.method === 'POST' || req.method === 'OPTIONS') && requestOrigin !== allowedOrigin) {
     return json(res, 403, { error: 'Origin is not allowed' });
   }
 
