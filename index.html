@@ -33,9 +33,9 @@
   </div>
   <div class="selection-tools" id="selectionTools"><button data-select="listen">▶ 朗读</button><button data-select="highlight">高亮</button><button data-select="note">写笔记</button><button data-select="lookup">查词</button></div><div class="toast" id="toast">已保存</div>
   <script type="module">
-    import {splitLegalSentences,normalizeLegalSpeech} from './assets/legal-speech.js';
+    import {splitLegalSentences,normalizeLegalSpeech} from './assets/legal-speech.js?v=20260824-pilot1';
     const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-    const [course,dictionary]=await Promise.all([fetch("assets/course-content.json").then(r=>r.json()),fetch("assets/course-dictionary.json").then(r=>r.json())]);
+    const [course,dictionary]=await Promise.all([fetch("assets/course-content.json?v=20260824-pilot1").then(r=>r.json()),fetch("assets/course-dictionary.json?v=20260824-pilot1").then(r=>r.json())]);
     const TEST_PAGE=9,DEFAULT_API_ENDPOINT='https://1434356797-0sb9g9vb7b.ap-guangzhou.tencentscf.com/tts',studyPages=course.pages.filter(p=>p.page===TEST_PAGE),store=JSON.parse(localStorage.getItem("usbar-studio-v2")||"{}"),save=()=>localStorage.setItem("usbar-studio-v2",JSON.stringify(store));
     store.page=TEST_PAGE;store.completed=store.completed||[];store.notes=store.notes||[];store.highlights=store.highlights||{};store.edits=store.edits||{};store.savedWords=store.savedWords||[];store.apiEndpoint=store.apiEndpoint||DEFAULT_API_ENDPOINT;
     const pageOneGlossary={
