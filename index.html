@@ -50,6 +50,7 @@
     import {initCalibrate} from './assets/calibrate.js?v=20260825';
     import {initReading} from './assets/reading.js?v=20260825';
     import {initBadges} from './assets/badges.js?v=20260825';
+    import {dueToday} from './assets/review-engine.js?v=20260825';
     const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
     if(window.CloudSync?.ready)await window.CloudSync.ready();
     const syncTeacherLink=()=>{const el=document.getElementById("teacherLink");if(el&&window.CloudSync?.isTeacher?.())el.style.display="";};
@@ -87,6 +88,16 @@
     $("#enterStudio").onclick=()=>{$("#welcome").classList.add("hidden");sessionStorage.setItem('usbar-welcome-seen','1');setTimeout(()=>$("#welcome").hidden=true,520)};
     if(sessionStorage.getItem('usbar-welcome-seen')==='1'){$("#welcome").classList.add("hidden");$("#welcome").hidden=true}
     if(!store.profile){const cb=document.createElement('button');cb.id='calibWelcome';cb.className='welcome-start';cb.style.cssText='background:#fff;color:#152445;box-shadow:none;border:2px solid #152445';cb.textContent='⏱ 先做 20 分钟校准';cb.onclick=()=>{$("#welcome").classList.add("hidden");sessionStorage.setItem('usbar-welcome-seen','1');App.startCalibration?.()};$("#enterStudio").parentNode.insertBefore(cb,$("#enterStudio"))}
+    { // 今日队列：下一页 + 到期复习 + 待完成复述
+      const next=studyPages.find(p=>!store.completed.includes(p.page))||studyPages[studyPages.length-1];
+      const dueN=dueToday(store.reviewQueue||[]).length;
+      const retellN=Math.max(0,(window.RETELL_TASKS?.[next.page]||[]).length-Object.keys(store.retellLog?.[next.page]||{}).length);
+      const card=document.createElement('button');card.id='todayQueue';
+      card.style.cssText='display:flex;gap:14px;align-items:center;margin:20px 0 0;padding:13px 16px;background:#fff;border:1px solid #dfe5f0;border-radius:14px;cursor:pointer;text-align:left;max-width:390px;box-shadow:0 6px 18px rgba(26,42,74,.07)';
+      card.innerHTML=`<b style="font-size:10px;letter-spacing:.14em;color:#5f82c8;flex:none">TODAY</b><span style="font-size:12.5px;color:#3d4a68;line-height:1.65"><b>第 ${next.page} 页 · ${escapeHtml(pageTitle(next))}</b><br><span style="color:#8a94ab;font-size:11px">${dueN} 词复习待到期 · ${retellN} 条复述待完成</span></span><span style="margin-left:auto;color:#aeb9cf">→</span>`;
+      card.onclick=()=>{store.page=next.page;save();renderAll();$("#welcome").classList.add("hidden");sessionStorage.setItem('usbar-welcome-seen','1');setTimeout(()=>$("#welcome").hidden=true,520)};
+      $("#enterStudio").parentNode.insertBefore(card,$("#enterStudio").nextSibling);
+    }
     function pageTitle(page){const first=page.blocks.find(b=>b.kind==='heading'&&b.text.length>6);return legalTitles[page.page]||first?.text.replace(/[\u3400-\u9fff].*/,"").trim()||`讲义第 ${page.page} 页`}
     function renderPageList(filter=""){const needle=filter.trim().toLowerCase();$("#pageList").innerHTML=studyPages.filter(p=>!needle||p.blocks.some(b=>b.text.toLowerCase().includes(needle))).map(p=>`<button class="page-item${p.page===store.page?' active':''}" data-page="${p.page}"><span class="day">P${String(p.page).padStart(2,'0')}</span><span class="title">${escapeHtml(pageTitle(p))}</span><span class="done">${store.completed.includes(p.page)?'✓':''}</span></button>`).join('');$$('.page-item').forEach(b=>b.onclick=()=>{store.page=+b.dataset.page;save();renderAll();closePanels();window.scrollTo({top:0,behavior:'smooth'})});$("#progressText").textContent=`${store.completed.filter(n=>studyPages.some(p=>p.page===n)).length} / ${studyPages.length}`}
     $("#pageSearch").oninput=e=>renderPageList(e.target.value);

@@ -932,6 +932,8 @@ git add SUPABASE_SETUP.md && git commit -m "docs: 训练场使用说明" && git 
 
 ## 任务依赖图
 
+> **M6 实施偏差记录（T12–T14 已完成）**：①badges.js 修正计划代码两处 bug——certiorari 用 `flatMap(Object.values)` 展开嵌套 retellLog（原 `.flat()` 取不到 entry）、lead_foot 加 `verified!==false` 防 400wpm 扫读误授；②新增 streakDays 导出供 progress.html 复用；③cloud-sync.js 补 `logEvent(kind,detail)` 导出（原计划只在前端调用但从未导出，T9/T10/T11 的事件全是空调用）；④teacher.html COMPLETED 统计按试运行区间 7–16 过滤；⑤今日队列卡片插在开始按钮之后（不改欢迎页原有版式与图片）；⑥verify-t14 模拟新会话回访（清 welcome-seen 再 reload）后点今日队列。（tests 15/15 + verify-t12/13/14 全过）
+
 ```
 T1 解锁51页 ─┬─ T2 状态键/App ─┬─ T3 TTS修复 ── T11 三遍法
              │                 ├─ T4 中文折叠 ─┐
