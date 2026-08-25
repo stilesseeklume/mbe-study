@@ -751,6 +751,8 @@ git add tools/gen-calibration.mjs assets/calibration.json assets/calibrate.js in
 - Create: `assets/reading.js`
 - Modify: `index.html`（接入）
 
+> **实施偏差记录（已完成）**：readingLog 条目增加 `verified` 布尔（挖空通过=true；扫读 wpm>400、点"想不起来"、无可挖词=false），供 T13 老师面板区分有效计时；⏱ 按钮排除 heading 块（`.study-block.en:not(.heading)`）；净读文本优先 store.edits 修改版。（verify-t11 全过：按钮全挂/退出不计/扫读直录/挖空验证/切页刷新/快速profile隐藏三遍法条）
+
 - [ ] **Step 1: reading 模块**
 
 `assets/reading.js`：

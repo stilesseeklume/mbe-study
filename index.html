@@ -48,6 +48,7 @@
     import {initRetell} from './assets/retell.js?v=20260825';
     import {initReview} from './assets/review.js?v=20260825';
     import {initCalibrate} from './assets/calibrate.js?v=20260825';
+    import {initReading} from './assets/reading.js?v=20260825';
     const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
     if(window.CloudSync?.ready)await window.CloudSync.ready();
     const syncTeacherLink=()=>{const el=document.getElementById("teacherLink");if(el&&window.CloudSync?.isTeacher?.())el.style.display="";};
@@ -129,6 +130,7 @@
     usbarRegister(initRetell);
     usbarRegister(initReview);
     usbarRegister(initCalibrate);
+    usbarRegister(initReading);
     renderAll();
   </script>
 </body>
