@@ -23,7 +23,7 @@ with sync_playwright() as p:
     page.goto(f"{BASE}/index.html")
     page.wait_for_selector(".word-token", timeout=15000)
     tq = page.inner_text("#todayQueue")
-    assert "第 7 页" in tq and "0 条复述待完成" in tq, f"todayQueue wrong: {tq}"
+    assert "第 9 页" in tq and "3 条复述待完成" in tq, f"todayQueue wrong: {tq}"
 
     # ---- 2) calibration wizard (skim -> fast branch) ----
     page.click("#calibWelcome")
@@ -43,14 +43,14 @@ with sync_playwright() as p:
     prof = state(page)["profile"]
     assert prof["vocabCoverage"] == 100 and prof["config"]["audioLoop"] is False, f"profile wrong: {prof}"
 
-    # ---- 3) today queue click -> first incomplete page 7 (simulate fresh session) ----
+    # ---- 3) today queue click -> first incomplete page 9 (simulate fresh session) ----
     page.evaluate("sessionStorage.removeItem('usbar-welcome-seen')")
     page.reload()
     page.wait_for_selector(".word-token", timeout=15000)
     page.wait_for_selector("#todayQueue:visible", timeout=15000)
     page.click("#todayQueue")
     page.wait_for_timeout(400)
-    assert "第 7 页" in page.inner_text("#crumb"), f"todayQueue nav failed: {page.inner_text('#crumb')}"
+    assert "第 9 页" in page.inner_text("#crumb"), f"todayQueue nav failed: {page.inner_text('#crumb')}"
 
     # ---- 4) page 10: lookup + zh expand + save word + timed read (skim) ----
     page.click('.page-item[data-page="10"]')

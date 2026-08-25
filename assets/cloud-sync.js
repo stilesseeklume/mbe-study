@@ -27,6 +27,8 @@
   var lastSnapshot = {};
   var pushTimer = null;
   var retryTimer = null;
+  var retryAttempt = 0;
+  var pushFails = 0;
   var loginEventSent = false;
   var statusListeners = [];
 
@@ -152,7 +154,7 @@
       logEvents(store, before);
       setStatus('online');
     }).catch(function (error) {
-      setStatus('offline');
+      if (++pushFails >= 2) setStatus('offline');
       scheduleRetry();
       throw error;
     });
@@ -192,14 +194,16 @@
     pushTimer = setTimeout(function () { push().catch(function () {}); }, 1200);
   }
 
-  function scheduleRetry() {
+  function scheduleRetry(immediate) {
     clearTimeout(retryTimer);
+    var delay = immediate ? 800 : Math.min(15000 * (retryAttempt + 1), 60000);
+    if (!immediate) retryAttempt += 1;
     retryTimer = setTimeout(function () {
       restoreSession().then(function (ok) {
         if (!ok) { setStatus('login'); return; }
         return pull().then(function () { setStatus('online'); schedulePush(); });
       }).catch(function () { scheduleRetry(); });
-    }, 45000);
+    }, delay);
   }
 
   /* ---------- 登录界面 ---------- */
@@ -393,6 +397,7 @@
 
   function setStatus(next) {
     status = next;
+    if (next === 'online') { retryAttempt = 0; pushFails = 0; }
     renderPill();
     renderBanner();
     statusListeners.forEach(function (cb) { try { cb(next); } catch (e) {} });
@@ -441,6 +446,9 @@
   }
 
   window.addEventListener('usbar:save', schedulePush);
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'visible' && status === 'offline' && session) scheduleRetry(true);
+  });
 
   window.CloudSync = {
     ready: ready,

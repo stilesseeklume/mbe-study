@@ -146,13 +146,13 @@
       function render(stateRows, events) {
         var state = {};
         (stateRows || []).forEach(function (row) { state[row.key] = row.value; });
-        var completed = (state.completed || []).filter(function (n) { return n >= 7 && n <= 16; });
+        var completed = (state.completed || []).filter(function (n) { return n >= 9 && n <= 16; });
         var notes = (state.notes || []).slice().sort(function (a, b) { return (b.id || 0) - (a.id || 0); });
         var words = state.savedWords || [];
         var activity = state._activity || {};
 
         $('#stats').innerHTML =
-          stat('COMPLETED', (completed.length || 0) + '', '试运行 10 页（宪法第一章）', completed.length ? 'hot' : '') +
+          stat('COMPLETED', (completed.length || 0) + '', '试运行 8 页（宪法第一章）', completed.length ? 'hot' : '') +
           stat('NOTES', notes.length + '', '全部笔记（可批改）') +
           stat('SAVED WORDS', words.length + '', '生词本') +
           stat('LAST ACTIVE', relTime(activity.last_active), '最近一次打开学习室');
