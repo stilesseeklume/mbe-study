@@ -11,7 +11,7 @@
   var LS_AUTH = 'usbar-sync-auth';
   var LS_SKIP = 'usbar-sync-skipped';
 
-  var SYNC_KEYS = ['page', 'completed', 'notes', 'highlights', 'edits', 'savedWords', 'apiEndpoint'];
+  var SYNC_KEYS = ['page', 'completed', 'notes', 'highlights', 'edits', 'savedWords', 'apiEndpoint', 'retellLog', 'reviewQueue', 'lookupLog', 'badges', 'profile', 'readingLog', 'zhExpand'];
   var STATUS_TEXT = {
     off: ['✎', '云同步未配置'],
     connecting: ['◌', '正在连接云同步…'],
