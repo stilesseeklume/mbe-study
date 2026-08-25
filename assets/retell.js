@@ -40,6 +40,7 @@ export function initRetell(App){
     b.disabled=true;b.textContent='Grading…';
     try{const feedback=await App.grade({kind:'retell',concept:t.concept,prompt:t.prompt,reference:t.reference,answer});
       store.retellLog[store.page]={...log(),[i]:{answer,feedback,time:Date.now()}};save();
+      (feedback.term_issues||[]).forEach(x=>{if(x.fix)App.enqueueReview?.({id:'c:'+x.fix,word:x.fix,type:'chunk',source:'corrected',contextSentence:x.fix})});
       render();if(doneCount()>=tasksFor().length&&!store.completed.includes(store.page)){store.completed.push(store.page);save();App.renderAll();toast('输出闭环完成，本页已标记 ✓')}
     }catch(e){b.disabled=false;b.textContent='Submit';toast('批改暂不可用：已保存草稿，稍后重试');store.retellLog[store.page]={...log(),[i]:{answer}};save()}}
   }
