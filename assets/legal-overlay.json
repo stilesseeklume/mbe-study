@@ -1,0 +1,101 @@
+{
+ "9": [
+  {"word":"bar","display":"the Bar / Bar Exam","phonetic":"bɑːr","legalTranslation":"律师资格考试；律师界","legalNote":"\"Passing the bar\" means qualifying to practice law; the MBE is part of it.","generalTrap":"通用义是\"酒吧/条状物\"，法律语境指法律职业整体与律师资格考试"},
+  {"word":"standing","display":"standing (n.)","phonetic":"ˈstændɪŋ","legalTranslation":"诉讼资格；原告适格","legalNote":"A plaintiff must have a personal stake in the outcome to sue in federal court.","generalTrap":"通用义是\"站立/地位\"，法律上指当事人有权起诉的资格"},
+  {"word":"justiciability","display":"justiciability","phonetic":"ˌdʒʌstɪʃiəˈbɪləti","legalTranslation":"可裁判性","legalNote":"Whether a dispute is suitable for court decision (standing, ripeness, mootness, political question).","generalTrap":"词典少见词；指法院能否对该争议作出裁判"},
+  {"word":"mootness","display":"mootness","phonetic":"ˈmuːtnəs","legalTranslation":"争议失效（案件已决）","legalNote":"If events after filing end the plaintiff's injury, the case must be dismissed as moot.","generalTrap":"moot 通用义是\"无实际意义的辩论题\"，法律上指案件因事态变化而失去争议性"},
+  {"word":"ripeness","display":"ripeness","phonetic":"ˈraɪpnəs","legalTranslation":"成熟性（争议时机）","legalNote":"A dispute must be sufficiently developed, not hypothetical, before a court hears it.","generalTrap":"ripe 通用义\"果实成熟\"，法律上指争议已发展到可裁判的阶段"},
+  {"word":"precedents","display":"precedent","phonetic":"ˈprɛsɪdənt","legalTranslation":"先例","legalNote":"Landmark Supreme Court cases bind later courts; MBE answers turn on them.","generalTrap":"通用义\"先例/前例\"相近，但法律语境特指有拘束力的判例"},
+  {"word":"hypothetical","display":"hypothetical (n.)","phonetic":"ˌhaɪpəˈθɛtɪkəl","legalTranslation":"假设案情（考题情境）","legalNote":"Bar questions present hypothetical fact patterns to apply precedent rules.","generalTrap":"通用义\"假设的\"；名词化后指考题中的假设案情"},
+  {"word":"enumerated","display":"enumerated powers","phonetic":"ɪˈnuːməreɪtɪd","legalTranslation":"（宪法）明示列举的权力","legalNote":"Congress has only the powers enumerated in Article I, Section 8.","generalTrap":"通用义\"逐一列举的\"，法律上特指宪法明文授予的联邦权力"},
+  {"word":"domains","display":"domain","phonetic":"doʊˈmeɪn","legalTranslation":"（学科）领域","legalNote":"Constitutional Law tests eight key domains on the bar exam.","generalTrap":"通用义\"领域/域名\"，此处指学科的八大板块"},
+  {"word":"landmark","display":"landmark case","phonetic":"ˈlændmɑːrk","legalTranslation":"标志性判例","legalNote":"e.g. Marbury v. Madison established judicial review.","generalTrap":"通用义\"地标\"，法律语境指奠定规则的名案"}
+ ],
+ "10": [
+  {"word":"controversies","display":"cases and controversies","phonetic":"ˈkɒntrəvɜːrsiz","legalTranslation":"案件与争议（第三条要件）","legalNote":"Article III limits federal courts to actual cases and controversies.","generalTrap":"通用义\"争论/争议话题\"，法律上是有特定含义的受案要件"},
+  {"word":"threshold","display":"threshold requirement","phonetic":"ˈθrɛʃhoʊld","legalTranslation":"门槛要件","legalNote":"Cases and Controversies set the threshold for federal jurisdiction.","generalTrap":"通用义\"门槛/阈值\"，法律上指进入法院的前提条件"},
+  {"word":"stake","display":"personal stake","phonetic":"steɪk","legalTranslation":"个人利害关系","legalNote":"Standing requires a concrete, personal stake in the outcome.","generalTrap":"通用义\"桩/赌金\"，法律上指与案件结果的利害牵连"},
+  {"word":"bars","display":"bar (v.)","phonetic":"bɑːrz","legalTranslation":"排除；禁止（诉讼）","legalNote":"\"Mootness bars cases where the issue has already been resolved.\"","generalTrap":"名词是\"酒吧\"；动词在法律里指\"排除/禁止某类诉讼\""},
+  {"word":"abstention","display":"abstention doctrine","phonetic":"æbˈstɛnʃən","legalTranslation":"（联邦法院）中止审理原则","legalNote":"Federal courts defer to state courts in certain cases.","generalTrap":"通用义\"戒除/弃权（投票）\"，法律上指联邦法院让路给州法院"},
+  {"word":"discretionary","display":"discretionary review","phonetic":"dɪˈskrɛʃəˌnɛri","legalTranslation":"自由裁量的（受理）","legalNote":"The Supreme Court grants certiorari at its discretion, not by right.","generalTrap":"通用义\"酌情的\"，法律上指法院可自行决定是否受理"},
+  {"word":"jurisdiction","display":"jurisdiction","phonetic":"ˌdʒʊrɪsˈdɪkʃən","legalTranslation":"管辖权","legalNote":"Jurisdictional limits define which court may hear a case.","generalTrap":"通用义\"司法辖区\"，法律上指法院审理案件的权力"},
+  {"word":"suits","display":"suit (n.)","phonetic":"suːts","legalTranslation":"诉讼","legalNote":"Lower federal courts may not hear suits against state governments.","generalTrap":"通用义\"西装/适合\"，法律上指民事诉讼"},
+  {"word":"immunity","display":"sovereign immunity","phonetic":"ɪˈmjuːnəti","legalTranslation":"（主权）豁免","legalNote":"State sovereign immunity shields states from many suits in federal court.","generalTrap":"通用义\"免疫力\"，法律上指免于被诉的豁免权"},
+  {"word":"doctrine","display":"doctrine","phonetic":"ˈdɑːktrɪn","legalTranslation":"（法律）原则；主义","legalNote":"e.g. the political question doctrine excludes certain disputes.","generalTrap":"通用义\"学说/教义\"，法律上指有拘束力的裁判原则"}
+ ],
+ "11": [
+  {"word":"injunctive","display":"injunctive relief","phonetic":"ɪnˈdʒʌŋktɪv","legalTranslation":"禁令救济","legalNote":"A court order requiring or forbidding conduct, as opposed to money damages.","generalTrap":"词典少见；relief 不是\"放松\"而是\"救济\"，injunction 是法院禁令"},
+  {"word":"relief","display":"relief (n.)","phonetic":"rɪˈliːf","legalTranslation":"（法律）救济","legalNote":"The remedy a plaintiff asks the court to grant (damages, injunction, etc.).","generalTrap":"通用义\"宽慰/减轻\"，法律上指法院给予的补救"},
+  {"word":"allege","display":"allege","phonetic":"əˈlɛdʒ","legalTranslation":"（起诉状）主张；诉称","legalNote":"The plaintiff must allege and prove causation and redressability.","generalTrap":"通用义\"断言（无证据）\"，诉讼中指当事人在状书中主张的事实"},
+  {"word":"indigents","display":"indigent (n.)","phonetic":"ˈɪndɪdʒənt","legalTranslation":"贫困者","legalNote":"Hospitals must provide free care to indigents to keep tax-exempt status.","generalTrap":"罕见词；法律语境（如刑事指定辩护）指经济困难者"},
+  {"word":"exempt","display":"tax-exempt","phonetic":"ɪɡˈzɛmpt","legalTranslation":"免税的；豁免的","legalNote":"Tax-exempt status depends on meeting statutory conditions.","generalTrap":"通用义\"免除的\"，法律上多指免税资格"},
+  {"word":"redressability","display":"redressability","phonetic":"","legalTranslation":"可救济性","legalNote":"A favorable decision must be likely to remedy the injury.","generalTrap":"构造词；standing 三要素之一，判决须能弥补损害"},
+  {"word":"remedy","display":"remedy (n.)","phonetic":"ˈrɛmədi","legalTranslation":"救济；纠正","legalNote":"A court decision must be likely to remedy the plaintiff's injury.","generalTrap":"通用义\"疗法/补救办法\"，法律上指法院提供的救济手段"},
+  {"word":"municipality","display":"municipality","phonetic":"mjuːˌnɪsəˈpæləti","legalTranslation":"市政当局","legalNote":"Suing \"the municipality\" means suing the city government entity.","generalTrap":"指作为法律主体的市政府，可作被告"},
+  {"word":"injunction","display":"injunction","phonetic":"ɪnˈdʒʌŋkʃən","legalTranslation":"禁令","legalNote":"Lyons lacked standing to enforce an injunction against future chokeholds.","generalTrap":"通用词典少见；法院禁止/命令特定行为的裁判"},
+  {"word":"sustained","display":"sustain (an injury)","phonetic":"səˈsteɪnd","legalTranslation":"遭受（损害）；（上诉）维持","legalNote":"\"Injuries he sustained\" = injuries he suffered; on appeal, \"sustained\" also means upheld.","generalTrap":"通用义\"维持/支撑\"，法律上既指\"遭受损害\"又指\"维持原判\""}
+ ],
+ "12": [
+  {"word":"appellants","display":"appellant","phonetic":"əˈpɛlənt","legalTranslation":"上诉人","legalNote":"The party who appeals a lower court decision.","generalTrap":"与 appellee（被上诉人）相对，容易混淆"},
+  {"word":"clause","display":"clause (n.)","phonetic":"klɔːz","legalTranslation":"（宪法/合同）条款","legalNote":"Establishment Clause, Free Exercise Clause—First Amendment limits.","generalTrap":"通用义\"从句\"，法律上指成文法的具体条款"},
+  {"word":"enactment","display":"enactment","phonetic":"ɪˈnæktmənt","legalTranslation":"制定的法律；立法文件","legalNote":"\"the challenged enactment\" = the statute being attacked.","generalTrap":"指经立法程序通过的文件，不是\"演出\""},
+  {"word":"nexuses","display":"nexus","phonetic":"ˈnɛksəs","legalTranslation":"关联（逻辑联系）","legalNote":"Flast requires a logical link (nexus) between taxpayer status and the enactment.","generalTrap":"学术词；指两个事物间的必要关联"},
+  {"word":"strike","display":"strike down","phonetic":"straɪk","legalTranslation":"（法院）撤销；判违宪","legalNote":"Plaintiffs sued to strike down the IRS rule as inconsistent with the statute.","generalTrap":"通用义\"打击/罢工\"，strike down 指法院宣告法律无效"},
+  {"word":"expenditures","display":"expenditure","phonetic":"ɪkˈspɛndɪtʃər","legalTranslation":"（财政）支出","legalNote":"Congressional expenditures funded instruction in religious schools.","generalTrap":"通用义\"花费\"，法律语境指政府财政支出"},
+  {"word":"inconsistent","display":"inconsistent (with)","phonetic":"ˌɪnkənˈsɪstənt","legalTranslation":"与……相抵触的","legalNote":"A rule inconsistent with the federal statute cannot stand.","generalTrap":"通用义\"不一致的\"，法律上指与上位法冲突"},
+  {"word":"exceeds","display":"exceed (constitutional limits)","phonetic":"ɪkˈsiːdz","legalTranslation":"超出（宪法限制）","legalNote":"The enactment must exceed specific constitutional limits on taxing/spending power.","generalTrap":"通用义\"超过（数量）\"，法律上指越权"},
+  {"word":"grants","display":"grant (n./v.)","phonetic":"grænts","legalTranslation":"（政府）拨款；授予","legalNote":"Taxpayers lack standing to challenge government grants of property to religious institutions.","generalTrap":"通用义\"授予/承认\"，法律上指政府拨款或地产授予"},
+  {"word":"sue","display":"sue (v.)","phonetic":"suː","legalTranslation":"起诉","legalNote":"Appellants had standing to sue as taxpayers under Flast.","generalTrap":"与\"苏\"无关；提起诉讼"}
+ ],
+ "13": [
+  {"word":"ripe","display":"ripe / ripeness","phonetic":"raɪp","legalTranslation":"成熟可裁判的","legalNote":"Issues \"ripe for judicial consideration\" are developed enough for review.","generalTrap":"通用义\"果实成熟\"，法律上指争议时机成熟"},
+  {"word":"hardship","display":"hardship to the parties","phonetic":"ˈhɑːrdʃɪp","legalTranslation":"（当事人）现实困境","legalNote":"Withholding review would result in hardship—ripeness factor.","generalTrap":"通用义\"艰难\"，法律上是成熟性分析的权衡要素"},
+  {"word":"fitness","display":"fitness of the issue","phonetic":"ˈfɪtnəs","legalTranslation":"（问题）适裁性","legalNote":"Purely legal issues are more likely fit for pre-enforcement review.","generalTrap":"通用义\"健身/健康\"，法律上指问题适合法院现在裁判"},
+  {"word":"pre-enforcement","display":"pre-enforcement review","phonetic":"","legalTranslation":"执行前（司法审查）","legalNote":"Challenging a regulation before it is enforced against you.","generalTrap":"构词罕见；指在执法发生前起诉审查规则"},
+  {"word":"declaratory","display":"declaratory judgment","phonetic":"dɪˈklɛrətɔːri","legalTranslation":"确认判决","legalNote":"A court declares rights without ordering anything.","generalTrap":"通用义\"宣言式的\"，法律上指宣告法律关系的判决"},
+  {"word":"abstain","display":"abstain (from jurisdiction)","phonetic":"æbˈsteɪn","legalTranslation":"（法院）回避行使管辖","legalNote":"The court may abstain until the state court construes the statute.","generalTrap":"通用义\"戒除/弃权\"，法律上指联邦法院暂不行使管辖权"},
+  {"word":"entertain","display":"entertain (a suit)","phonetic":"ˌɛntərˈteɪn","legalTranslation":"受理（诉讼）","generalTrap":"通用义\"娱乐/招待\"，法律上指法院接受并审理案件","legalNote":"\"Should the court entertain the suit?\" = should it hear the case?"},
+  {"word":"prosecution","display":"prosecution (n.)","phonetic":"ˌprɑːsɪˈkjuːʃən","legalTranslation":"刑事追诉","legalNote":"Companies risk prosecution if they violate the regulations.","generalTrap":"通用义\"执行/继续从事\"，法律上指国家提起刑事控诉"},
+  {"word":"comply","display":"comply with","phonetic":"kəmˈplaɪ","legalTranslation":"遵守；合规","legalNote":"Companies had to incur huge costs to comply with the regulations.","generalTrap":"通用义\"照做\"，法律上指满足法定要求（合规）"},
+  {"word":"conviction","display":"conviction (n.)","phonetic":"kənˈvɪkʃən","legalTranslation":"定罪判决","legalNote":"She was fined and convicted under the ordinance.","generalTrap":"通用义\"坚定的信念\"，法律上指刑事定罪"},
+  {"word":"dismiss","display":"dismiss (a case)","phonetic":"dɪsˈmɪs","legalTranslation":"驳回；不予受理","legalNote":"If the plaintiff's injury has ended, the case must be dismissed as moot.","generalTrap":"通用义\"解雇/不理会\"，法律上指法院驳回案件"}
+ ],
+ "14": [
+  {"word":"adjudicate","display":"adjudicate","phonetic":"əˈdʒuːdɪkeɪt","legalTranslation":"裁判（案件）","legalNote":"Political question doctrine covers violations federal courts will not adjudicate.","generalTrap":"正式法律用语，指法院对案件作出裁决"},
+  {"word":"republican","display":"republican form of government","phonetic":"rɪˈpʌblɪkən","legalTranslation":"共和政体的","legalNote":"Guarantee Clause (Art. IV §4) challenges are non-justiciable political questions.","generalTrap":"极易误读为\"共和党的\"；此处指共和制政体形式"},
+  {"word":"impeachment","display":"impeachment","phonetic":"ɪmˈpiːtʃmənt","legalTranslation":"弹劾","legalNote":"Challenges to the impeachment process are political questions (Nixon v. US).","generalTrap":"不是\"贬损名声\"，指对官员的宪法弹劾程序"},
+  {"word":"rescinded","display":"rescind (a treaty)","phonetic":"rɪˈsɪndɪd","legalTranslation":"废除；撤销","legalNote":"President Carter rescinded a treaty with Taiwan.","generalTrap":"正式用语；使条约/合同自始无效"},
+  {"word":"rescission","display":"rescission","phonetic":"rɪˈsɪʒən","legalTranslation":"（条约/合同的）废止","legalNote":"The Senate argued it must approve any rescission of a treaty.","generalTrap":"法律名词形式；合同法里也指合同撤销"},
+  {"word":"treaty","display":"treaty","phonetic":"ˈtriːti","legalTranslation":"（国际）条约","legalNote":"Treaties require Senate approval (two-thirds) under Article II.","generalTrap":"与 contract（合同）区分，treaty 是国家间协定"},
+  {"word":"perjury","display":"perjury","phonetic":"ˈpɜːrdʒəri","legalTranslation":"伪证罪","legalNote":"Judge Nixon was convicted of perjury before a grand jury.","generalTrap":"刑事罪名，指宣誓后作虚假陈述"},
+  {"word":"removal","display":"removal (from office)","phonetic":"rɪˈmuːvəl","legalTranslation":"罢免；免职","legalNote":"The Senate votes on removal after impeachment.","generalTrap":"通用义\"移除/搬迁\"，弹劾语境指免去公职"},
+  {"word":"impeached","display":"impeach (v.)","phonetic":"ɪmˈpiːtʃt","legalTranslation":"弹劾（提出指控）","legalNote":"Nixon was impeached by the House; removal requires a Senate vote.","generalTrap":"impeach ≠ 罢免；只是众议院提出弹劾指控"},
+  {"word":"conduct","display":"conduct (n.)","phonetic":"ˈkɑːndʌkt","legalTranslation":"（总统）行为； conduct of foreign policy 外交行为","legalNote":"Challenges to the President's conduct of foreign policy are political questions.","generalTrap":"动词读 kənˈdʌkt 指\"指挥\"，名词指\"行为方式\""},
+  {"word":"referred","display":"refer (to the Senate)","phonetic":"rɪˈfɜːrd","legalTranslation":"移交；转交","legalNote":"The matter was referred to the Senate for a removal vote.","generalTrap":"通用义\"提到/参考\"，法律上指程序移交"}
+ ],
+ "15": [
+  {"word":"ordinance","display":"ordinance","phonetic":"ˈɔːrdɪnəns","legalTranslation":"（地方）条例","legalNote":"A city ordinance is local legislation, below state statute.","generalTrap":"不认识就当\"命令\"；特指市/县政府立法"},
+  {"word":"injunction","display":"injunction","phonetic":"ɪnˈdʒʌŋkʃən","legalTranslation":"禁令","legalNote":"Plaintiffs sought an injunction against the factory's pollution.","generalTrap":"法院禁止特定行为的命令"},
+  {"word":"appealed","display":"appeal (v.)","phonetic":"əˈpiːld","legalTranslation":"上诉","legalNote":"Defendant appealed and lost; then sought Supreme Court review.","generalTrap":"通用义\"呼吁\"，法律上指不服判决提请上级法院复审"},
+  {"word":"certiorari","display":"certiorari","phonetic":"ˌsɜːrtʃiəˈreɪriː","legalTranslation":"调卷令（最高法院受理令）","legalNote":"\"Should the Supreme Court grant certiorari?\" = agree to hear the case.","generalTrap":"拉丁词；grant cert 才进入实体审理"},
+  {"word":"merits","display":"on the merits","phonetic":"ˈmɛrɪts","legalTranslation":"实体问题；案件是非曲直","legalNote":"\"Hear the case on its merits\" = decide the substantive issues.","generalTrap":"通用义\"优点\"，法律上指案件的实体争点"},
+  {"word":"grounds","display":"(state) grounds","phonetic":"graʊndz","legalTranslation":"（判决）理由；根据","legalNote":"Independent and adequate state grounds bar Supreme Court review.","generalTrap":"通用义\"地面/理由\"，法律上指判决所依据的法律理由"},
+  {"word":"tort","display":"tort law","phonetic":"tɔːrt","legalTranslation":"侵权法","legalNote":"Pollution claims may sound in tort (state law) as well as federal law.","generalTrap":"法律专词；与 contract、crime 并列的民事责任"},
+  {"word":"designated","display":"designate (funds)","phonetic":"ˈdɛzɪɡneɪtɪd","legalTranslation":"指定（用途）","legalNote":"The fine was designated to go to the privately owned hospital.","generalTrap":"通用义\"指定/命名\"，法律上指款项专款专用"},
+  {"word":"unconstitutional","display":"unconstitutional","phonetic":"ˌʌnˌkɑːnstɪˈtuːʃənəl","legalTranslation":"违宪的","legalNote":"A law may be valid federally yet unconstitutional under the state constitution.","generalTrap":"注意违宪审查可基于州宪法而非联邦宪法"},
+  {"word":"constitutional","display":"constitutional (adj.)","phonetic":"ˌkɑːnstɪˈtuːʃənəl","legalTranslation":"符合宪法的；宪制的","legalNote":"\"Permissible under the United States Constitution\" = constitutional.","generalTrap":"既指\"宪法的\"，也指\"合宪的\"，看上下文"}
+ ],
+ "16": [
+  {"word":"sovereign","display":"sovereign immunity","phonetic":"ˈsɑːvrən","legalTranslation":"主权的（主权豁免）","legalNote":"States enjoy sovereign immunity from many private suits in federal court.","generalTrap":"通用义\"君主\"，法律上指州/国家的主权地位"},
+  {"word":"discharge","display":"discharge (a debt)","phonetic":"dɪsˈtʃɑːrdʒ","legalTranslation":"（债务）免除","legalNote":"Hood asked the bankruptcy court to discharge her student loan debt.","generalTrap":"一词多义：排放/出院/履行；破产法里指债务免除"},
+  {"word":"waiver","display":"waiver of immunity","phonetic":"ˈweɪvər","legalTranslation":"（权利/豁免的）放弃","legalNote":"Congress may abrogate or the state may waive sovereign immunity.","generalTrap":"通用义\"放弃（权利）文书\"，此处指州放弃豁免"},
+  {"word":"undue","display":"undue hardship","phonetic":"ˌʌnˈduː","legalTranslation":"过度的（不当困难）","legalNote":"Student loans are dischargeable only upon undue hardship.","generalTrap":"通用义\"过分的\"，破产法上有专门测试标准"},
+  {"word":"bankruptcy","display":"bankruptcy","phonetic":"ˈbæŋkrʌptsi","legalTranslation":"破产（程序）","legalNote":"Bankruptcy power lets Congress waive state immunity in this area.","generalTrap":"通用义\"破产\"，法律上指法定破产程序"},
+  {"word":"override","display":"override (immunity)","phonetic":"ˌoʊvərˈraɪd","legalTranslation":"推翻；突破（豁免）","legalNote":"Congress cannot override sovereign immunity using the Commerce Clause.","generalTrap":"通用义\"否决/覆盖\"，法律上指以立法突破宪法限制"},
+  {"word":"established","display":"established by the state","phonetic":"ɪˈstæblɪʃt","legalTranslation":"（依法）设立","legalNote":"The lender was an institution established by the state.","generalTrap":"经典陷阱：不是\"建立（一般）\"，而是\"依法设立（主体资格）\"，涉及州主体认定"},
+  {"word":"discrimination","display":"(age) discrimination","phonetic":"dɪˌskrɪmɪˈneɪʃən","legalTranslation":"（法律禁止的）歧视","legalNote":"The Age Discrimination in Employment Act was enacted under Commerce power.","generalTrap":"通用义\"区别对待\"，法律上指违法的歧视性差别对待"},
+  {"word":"abrogate","display":"abrogate","phonetic":"ˈæbrəɡeɪt","legalTranslation":"（依法）废除；撤销","legalNote":"Section 5 of the 14th Amendment lets Congress abrogate state immunity.","generalTrap":"正式法律动词；指废止法律或豁免"},
+  {"word":"pursuant","display":"pursuant to","phonetic":"pərˈsuːənt","legalTranslation":"依据；按照","legalNote":"Laws enacted pursuant to Congress's bankruptcy power.","generalTrap":"法律文书高频搭配 pursuant to = according to"},
+  {"word":"objection","display":"objection (n.)","phonetic":"əbˈdʒɛkʃən","legalTranslation":"异议","legalNote":"The state objected to the discharge request.","generalTrap":"庭审程序用语；对请求/证据提出异议"}
+ ]
+}
