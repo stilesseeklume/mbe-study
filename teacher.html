@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>廖同学学习面板 · Teacher View</title>
+  <style>
+    :root{--navy:#101b35;--navy2:#192b50;--blue:#5f82c8;--peach:#f3b7a9;--paper:#fbfcff;--ink:#18233a;--muted:#6e7890;--line:#dfe5f0;--panel:#f2f5fb;--ok:#16785c}
+    *{box-sizing:border-box}
+    html,body{margin:0;background:#edf1f8;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif}
+    button{font:inherit}
+    .bar{position:sticky;top:0;z-index:10;background:linear-gradient(90deg,#0f1b35,#17294e);color:#fff;display:flex;align-items:center;gap:14px;padding:14px 26px;box-shadow:0 10px 30px rgba(10,20,45,.25)}
+    .who{display:flex;gap:11px;align-items:center}
+    .who img{width:40px;height:40px;border-radius:13px;object-fit:cover;border:1px solid #ffffff55}
+    .who b{display:block;font-size:13px}
+    .who span{display:block;font-size:10px;color:#94a5c5;letter-spacing:.08em;margin-top:2px}
+    .bar-right{margin-left:auto;display:flex;gap:9px;align-items:center}
+    .tag{font-size:10.5px;color:#9fe3c8;border:1px solid #9fe3c84d;border-radius:999px;padding:5px 11px}
+    .tag.warn{color:#f3b7a9;border-color:#f3b7a94d}
+    .bar-right button,.bar-right a{border:1px solid #ffffff24;background:#ffffff0d;color:#dbe4f5;border-radius:10px;padding:8px 13px;font-size:11.5px;cursor:pointer;text-decoration:none;font-weight:700}
+    .bar-right button:hover,.bar-right a:hover{background:#ffffff1c}
+    main{max-width:1060px;margin:0 auto;padding:30px 22px 90px}
+    .gate{max-width:430px;margin:9vh auto;background:var(--paper);border-radius:22px;padding:38px 32px;text-align:center;box-shadow:0 24px 60px rgba(20,35,70,.12)}
+    .gate .kicker{font-size:10px;font-weight:900;letter-spacing:.2em;color:var(--blue)}
+    .gate h1{font-family:Georgia,"Songti SC",serif;font-size:27px;margin:12px 0 10px;color:#12203e}
+    .gate p{font-size:12.5px;line-height:1.8;color:var(--muted);margin:0 0 22px}
+    .gate button{border:0;border-radius:12px;background:var(--navy);color:#fff;padding:13px 26px;font-weight:800;font-size:13px;cursor:pointer}
+    .gate .hint{margin-top:18px;font-size:10.5px;color:#98a1b5}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-bottom:26px}
+    .stat{background:var(--paper);border:1px solid var(--line);border-radius:17px;padding:19px 19px 16px}
+    .stat small{display:block;font-size:10px;letter-spacing:.12em;color:var(--muted);font-weight:800;margin-bottom:9px}
+    .stat b{display:block;font-family:Georgia,serif;font-size:29px;color:#152344;line-height:1}
+    .stat span{display:block;font-size:10.5px;color:var(--muted);margin-top:7px}
+    .stat.hot b{color:#16785c}
+    section h2{font-family:Georgia,"Songti SC",serif;font-size:19px;margin:30px 0 14px;color:#152344}
+    section h2 small{font-family:-apple-system,"PingFang SC",sans-serif;font-size:10.5px;color:var(--muted);font-weight:500;margin-left:8px}
+    .feed{background:var(--paper);border:1px solid var(--line);border-radius:17px;padding:8px 20px}
+    .feed-row{display:flex;gap:13px;align-items:baseline;padding:13px 2px;border-bottom:1px solid #edf0f5;font-size:13px}
+    .feed-row:last-child{border-bottom:0}
+    .feed-ico{width:28px;height:28px;border-radius:9px;display:grid;place-items:center;font-size:12px;flex:none;align-self:center}
+    .feed-row b{font-size:13px}
+    .feed-row span{color:var(--muted);font-size:11px;margin-left:auto;white-space:nowrap}
+    .note-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+    .note-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:17px 18px}
+    .note-card q{display:block;font-family:Georgia,serif;font-size:12.5px;color:#526079;line-height:1.6;border-left:2px solid var(--peach);padding-left:11px;margin:0 0 11px}
+    .note-card p{margin:0;font-size:13.5px;line-height:1.75;color:var(--ink)}
+    .note-card small{display:block;margin-top:11px;color:var(--muted);font-size:10.5px}
+    .chips{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:8px 15px;font-size:12.5px;font-family:Georgia,serif}
+    .empty{background:var(--paper);border:1px dashed var(--line);border-radius:16px;padding:34px;text-align:center;color:var(--muted);font-size:12.5px;line-height:1.8}
+    .foot{margin-top:34px;text-align:center;color:#9aa4b8;font-size:10.5px;line-height:1.7}
+    @media(max-width:820px){.stats{grid-template-columns:repeat(2,1fr)}.note-grid{grid-template-columns:1fr}.bar{padding:12px 15px}.bar-right a{display:none}}
+  </style>
+</head>
+<body>
+  <header class="bar">
+    <div class="who"><img src="assets/rising-star.jpg" alt="廖同学"><div><b>廖同学 · 学习面板</b><span>TEACHER VIEW · READ ONLY</span></div></div>
+    <div class="bar-right"><span class="tag" id="syncTag">正在连接…</span><button id="refreshBtn">↻ 刷新</button><a href="index.html">← 返回学习室</a></div>
+  </header>
+  <main>
+    <div class="gate" id="gate" hidden></div>
+    <div id="board" hidden>
+      <div class="stats" id="stats"></div>
+      <section><h2>学习动态 <small>来自云端 · 每分钟自动刷新</small></h2><div class="feed" id="feed"></div></section>
+      <section><h2>全部笔记 <small id="noteCount"></small></h2><div class="note-grid" id="notes"></div></section>
+      <section><h2>生词本 <small id="wordCount"></small></h2><div class="chips" id="words"></div></section>
+      <div class="foot">数据保存在 Supabase，只有登录账号可以查看。<br>笔记的英文原文可供批改——点「返回学习室」可进入学生视角。</div>
+    </div>
+  </main>
+  <script src="assets/supabase-config.js?v=20260825-t1"></script>
+  <script src="assets/cloud-sync.js?v=20260825-t1"></script>
+  <script>
+    (function () {
+      var $ = function (s) { return document.querySelector(s); };
+      var C = window.CloudSync;
+      var escapeHtml = function (s) {
+        return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+          return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[c];
+        });
+      };
+      var relTime = function (iso) {
+        if (!iso) return '还没有记录';
+        var ms = Date.now() - new Date(iso).getTime();
+        if (ms < 0) ms = 0;
+        var min = Math.floor(ms / 60000);
+        if (min < 1) return '刚刚';
+        if (min < 60) return min + ' 分钟前';
+        if (min < 1440) return Math.floor(min / 60) + ' 小时前';
+        return Math.floor(min / 1440) + ' 天前';
+      };
+
+      function gate(html) {
+        var g = $('#gate');
+        g.hidden = false;
+        g.innerHTML = html;
+        $('#board').hidden = true;
+      }
+
+      function showUnconfigured() {
+        gate('<div class="kicker">TEACHER VIEW</div><h1>云同步还没配置</h1>' +
+          '<p>这个面板读取 Supabase 云端数据。请先按仓库里的 SUPABASE_SETUP.md 完成配置（约 5 分钟），再刷新本页。</p>');
+      }
+
+      function showLoginGate() {
+        gate('<div class="kicker">TEACHER VIEW</div><h1>请登录查看</h1>' +
+          '<p>登录共用的学习账号后，即可看到廖同学的完成进度、学习动态和全部笔记。</p>' +
+          '<button id="gateLogin">登录云同步</button>' +
+          '<div class="hint">账号见 SUPABASE_SETUP.md 第 3 步</div>');
+        $('#gateLogin').onclick = function () {
+          C.login().then(function () { if (C.isLoggedIn()) load(); });
+        };
+      }
+
+      function render(stateRows, events) {
+        var state = {};
+        (stateRows || []).forEach(function (row) { state[row.key] = row.value; });
+        var completed = state.completed || [];
+        var notes = (state.notes || []).slice().sort(function (a, b) { return (b.id || 0) - (a.id || 0); });
+        var words = state.savedWords || [];
+        var activity = state._activity || {};
+
+        $('#stats').innerHTML =
+          stat('COMPLETED', (completed.length || 0) + '', '试学阶段 1 页 / 43 页计划', completed.length ? 'hot' : '') +
+          stat('NOTES', notes.length + '', '全部笔记（可批改）') +
+          stat('SAVED WORDS', words.length + '', '生词本') +
+          stat('LAST ACTIVE', relTime(activity.last_active), '最近一次打开学习室');
+
+        var iconMap = { login: ['⛅', '#e8eefc', '#4a6bb5'], complete: ['✓', '#e4f5ef', '#16785c'], note: ['✎', '#fdeee9', '#b8654f'], word: ['＋', '#fdf6e3', '#9a7a1f'] };
+        var textMap = { login: '打开了学习室', complete: '完成了一页学习', note: '写了一条新笔记', word: '收藏了一个生词' };
+        var feed = $('#feed');
+        if (events && events.length) {
+          feed.innerHTML = events.slice(0, 40).map(function (ev) {
+            var icon = iconMap[ev.kind] || ['•', '#eef1f7', '#6e7890'];
+            return '<div class="feed-row"><span class="feed-ico" style="background:' + icon[1] + ';color:' + icon[2] + '">' + icon[0] + '</span>' +
+              '<b>廖同学</b>&nbsp;' + (textMap[ev.kind] || ev.kind) +
+              '<span>' + relTime(ev.created_at) + '</span></div>';
+          }).join('');
+        } else {
+          feed.innerHTML = '<div class="feed-row" style="border:0;color:var(--muted);font-size:12px">暂无动态——廖同学开始学习后，这里会显示她的每一次完成、笔记和收藏。</div>';
+        }
+
+        $('#noteCount').textContent = notes.length + ' 条 · 最新在前';
+        $('#notes').innerHTML = notes.length
+          ? notes.map(function (n) {
+              return '<div class="note-card"><q>' + escapeHtml(n.quote) + '</q><p>' + escapeHtml(n.text) + '</p><small>' + escapeHtml(n.time || '') + '</small></div>';
+            }).join('')
+          : '<div class="empty">还没有笔记。<br>廖同学在学习室里选中任意英文段落即可写笔记，写完会同步到这里。</div>';
+
+        $('#wordCount').textContent = words.length + ' 个';
+        $('#words').innerHTML = words.length
+          ? words.map(function (w) { return '<span class="chip">' + escapeHtml(w) + '</span>'; }).join('')
+          : '<div class="empty">生词本还是空的。</div>';
+
+        $('#gate').hidden = true;
+        $('#board').hidden = false;
+      }
+
+      function stat(label, value, sub, extra) {
+        return '<div class="stat ' + (extra || '') + '"><small>' + label + '</small><b>' + value + '</b><span>' + sub + '</span></div>';
+      }
+
+      function load() {
+        $('#syncTag').textContent = '正在读取…';
+        Promise.all([C.fetchState(), C.fetchEvents()])
+          .then(function (result) {
+            $('#syncTag').textContent = '已连接 · ' + new Date().toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' });
+            $('#syncTag').classList.remove('warn');
+            render(result[0], result[1]);
+          })
+          .catch(function (error) {
+            $('#syncTag').textContent = '读取失败';
+            $('#syncTag').classList.add('warn');
+            if (String(error.message || '').indexOf('401') >= 0 || !C.isLoggedIn()) showLoginGate();
+          });
+      }
+
+      function boot() {
+        if (!C.configured()) { showUnconfigured(); return; }
+        C.ready().then(function () {
+          if (!C.isLoggedIn()) { showLoginGate(); return; }
+          load();
+          setInterval(function () {
+            if (document.visibilityState === 'visible' && C.isLoggedIn()) load();
+          }, 60000);
+        });
+      }
+
+      $('#refreshBtn').onclick = function () {
+        if (C.isLoggedIn()) load();
+        else boot();
+      };
+
+      C.onStatus(function (s) {
+        if (s === 'login' && !$('#gate').hidden === false) { /* keep current view */ }
+      });
+
+      boot();
+    })();
+  </script>
+</body>
+</html>
