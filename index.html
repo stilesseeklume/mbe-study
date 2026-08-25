@@ -31,7 +31,7 @@
       <div class="rail-head"><b>CONSTITUTIONAL LAW</b><span id="progressText">0 / 43</span></div>
       <input class="search" id="pageSearch" placeholder="搜索讲义内容…">
       <div class="page-list" id="pageList"></div>
-      <div class="rail-foot">讲义已转为结构化课程。原 PDF 只保留作内容校对，不再承担学习界面。<br><a id="teacherLink" href="teacher.html" style="color:#8fa3c8;text-decoration:none;display:none">老师查看学习面板 →</a></div>
+      <div class="rail-foot">讲义已转为结构化课程。原 PDF 只保留作内容校对，不再承担学习界面。<br><a id="progressLink" href="progress.html" style="color:#8fa3c8;text-decoration:none">我的成长面板 →</a><br><a id="teacherLink" href="teacher.html" style="color:#8fa3c8;text-decoration:none;display:none">老师查看学习面板 →</a></div>
     </aside>
     <main class="workspace">
       <header class="topbar"><button class="icon mobile-menu" id="openRail" aria-label="打开课程目录">☰</button><div class="breadcrumb"><b id="crumb">Day 01 · PDF 9</b><span>点击词语查释义，选择文本即可高亮或做笔记</span></div><div class="top-actions"><button class="pill" id="readPage">▶ 朗读本页</button><button class="pill primary" id="completePage">完成本页</button></div></header>
@@ -49,6 +49,7 @@
     import {initReview} from './assets/review.js?v=20260825';
     import {initCalibrate} from './assets/calibrate.js?v=20260825';
     import {initReading} from './assets/reading.js?v=20260825';
+    import {initBadges} from './assets/badges.js?v=20260825';
     const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
     if(window.CloudSync?.ready)await window.CloudSync.ready();
     const syncTeacherLink=()=>{const el=document.getElementById("teacherLink");if(el&&window.CloudSync?.isTeacher?.())el.style.display="";};
@@ -131,6 +132,7 @@
     usbarRegister(initReview);
     usbarRegister(initCalibrate);
     usbarRegister(initReading);
+    usbarRegister(initBadges);
     renderAll();
   </script>
 </body>
