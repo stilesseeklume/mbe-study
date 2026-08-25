@@ -280,6 +280,62 @@
     });
   }
 
+  /* ---------- 未同步警示条：学习页顶部，未登录/断线时常驻 ---------- */
+  var bannerStyleReady = false;
+
+  function ensureBannerStyle() {
+    if (bannerStyleReady) return;
+    bannerStyleReady = true;
+    var style = document.createElement('style');
+    style.textContent = [
+      '#syncBanner{position:fixed;top:0;left:0;right:0;z-index:150;height:40px;box-sizing:border-box;display:flex;align-items:center;gap:12px;padding:0 16px;background:#8a3d33;color:#ffece7;font-size:12px;font-weight:750;box-shadow:0 8px 22px rgba(80,25,15,.28);cursor:default}',
+      '#syncBanner.mild{background:#4a5164;color:#e6e9f2}',
+      '#syncBanner.warm{background:#7a5a23;color:#ffefc9}',
+      '#syncBanner .sb-text{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}',
+      '#syncBanner button{border:1px solid #ffffff55;background:#ffffff1c;color:inherit;border-radius:9px;padding:6px 14px;font-size:11.5px;font-weight:800;cursor:pointer;white-space:nowrap}',
+      '#syncBanner button:hover{background:#ffffff30}',
+      'body.sync-banner-on .app{padding-top:40px}',
+      'body.sync-banner-on .topbar{top:40px}',
+      'body.sync-banner-on .rail{top:40px;height:calc(100vh - 40px)}',
+      'body.sync-banner-on .dock{top:40px;height:calc(100vh - 40px)}',
+      '@media(max-width:720px){#syncBanner{font-size:11px;gap:8px;padding:0 12px}}'
+    ].join('');
+    document.head.appendChild(style);
+  }
+
+  function bannerSpec() {
+    if (!configured()) return { tone: 'mild', text: '⚠ 云同步未配置：学习记录只保存在本机浏览器里', action: '' };
+    if (status === 'login') return { tone: '', text: '⚠ 学习记录未同步：当前是本地模式，进度和笔记不会上传云端，换设备或清浏览器会丢失', action: '立即登录' };
+    if (status === 'offline') return { tone: 'warm', text: '⚠ 云同步已断开：新记录暂存本机，恢复连接后自动上传', action: '重试连接' };
+    return null;
+  }
+
+  function renderBanner() {
+    if (!document.querySelector('.rail')) return;
+    var spec = bannerSpec();
+    var bar = document.getElementById('syncBanner');
+    if (!spec) {
+      if (bar) bar.remove();
+      document.body.classList.remove('sync-banner-on');
+      return;
+    }
+    ensureBannerStyle();
+    if (!bar) {
+      bar = document.createElement('div');
+      bar.id = 'syncBanner';
+      document.body.insertBefore(bar, document.body.firstChild);
+    }
+    bar.className = spec.tone;
+    bar.innerHTML = '<span class="sb-text">' + spec.text + '</span>' +
+      (spec.action ? '<button>' + spec.action + '</button>' : '');
+    var btn = bar.querySelector('button');
+    if (btn) btn.onclick = function () {
+      if (status === 'login') { showLogin(false); return; }
+      if (status === 'offline') onPillClick();
+    };
+    document.body.classList.add('sync-banner-on');
+  }
+
   /* ---------- 状态胶囊 ---------- */
   function renderPill() {
     var host = document.querySelector('.rail-foot');
@@ -338,6 +394,7 @@
   function setStatus(next) {
     status = next;
     renderPill();
+    renderBanner();
     statusListeners.forEach(function (cb) { try { cb(next); } catch (e) {} });
   }
 
@@ -413,8 +470,9 @@
   };
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', renderPill);
+    document.addEventListener('DOMContentLoaded', function () { renderPill(); renderBanner(); });
   } else {
     renderPill();
+    renderBanner();
   }
 })();
