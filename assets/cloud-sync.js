@@ -466,6 +466,10 @@
     onStatus: function (cb) { statusListeners.push(cb); },
     fetchState: function () { return rest('/rest/v1/study_state?select=key,value,updated_at'); },
     fetchEvents: function () { return rest('/rest/v1/study_events?select=kind,detail,created_at&order=created_at.desc&limit=120'); },
+    logEvent: function (kind, detail) {
+      if (!session) return;
+      rest('/rest/v1/study_events', { method: 'POST', body: JSON.stringify({ kind: String(kind), detail: { text: String(detail == null ? '' : detail) } }) }).catch(function () {});
+    },
     refresh: function () { return pull().then(function () { return push(); }); }
   };
 
