@@ -26,14 +26,16 @@
 2. 把本仓库 `supabase-schema.sql` 的全部内容粘贴进去 → Run
 3. 应显示 Success，左边 Tables 里出现 `study_state` 和 `study_events` 两张表
 
-### 3. 建账号（老师和学生共用一个）
+### 3. 建账号（老师、学生各一个）
 
-> 当前已建好：邮箱 `liao@study.local`（密码 privately 告知廖同学即可）。
+> 已建好两个账号（密码私下告知，勿提交进仓库）：
+> - 学生：`liao@study.local` —— 廖同学登录学习室用
+> - 老师：`teacher@usbar.study` —— 只有它能打开 teacher.html 面板
 
 1. 左侧 Authentication → Users → Add user → Create user
 2. 填邮箱（如 `liaostudy@example.com`）和密码（8 位以上）
 3. 勾选 Auto Confirm User（必须勾）
-4. 把这一组邮箱密码告诉廖同学（登录用，别提交进仓库）
+4. 老师邮箱需同步填进 `assets/supabase-config.js` 的 `teacherEmails` 列表
 
 ### 4. 填配置
 
@@ -51,11 +53,12 @@ window.SUPABASE_CONFIG = {
 
 > anon key 本来就是设计成公开的，真正挡住陌生人的是 RLS 策略——只有第 3 步创建的账号登录后才能读写。
 
-### 5. 登录使用
+### 5. 登录使用（分账号）
 
-- 廖同学打开网站 → 学习界面左下角点「⚿ 登录云同步」→ 输入账号 → 之后全自动
-- 老师打开 `网站地址/teacher.html` → 同一账号登录 → 看到完成进度、学习动态、全部笔记、生词本
-- 老师面板每 60 秒自动刷新，也可手动点「↻ 刷新」
+- 廖同学：打开网站 → 左下角「⚿ 登录云同步」→ 用**学生账号** → 之后全自动
+- 老师：打开 `网站地址/teacher.html` → 用**老师账号**登录 → 看到完成进度、学习动态、全部笔记、生词本
+- 学生账号打开 teacher.html 只会看到「此面板仅老师可用」；学习室左下角的「老师查看学习面板」入口也只对老师账号显示
+- 老师面板每 60 秒自动刷新，顶栏「⏻ 退出」可切换账号
 
 ## 行为说明
 

@@ -55,7 +55,7 @@
 <body>
   <header class="bar">
     <div class="who"><img src="assets/rising-star.jpg" alt="廖同学"><div><b>廖同学 · 学习面板</b><span>TEACHER VIEW · READ ONLY</span></div></div>
-    <div class="bar-right"><span class="tag" id="syncTag">正在连接…</span><button id="refreshBtn">↻ 刷新</button><a href="index.html">← 返回学习室</a></div>
+    <div class="bar-right"><span class="tag" id="syncTag">正在连接…</span><button id="refreshBtn">↻ 刷新</button><button id="logoutBtn">⏻ 退出</button><a href="index.html">← 返回学习室</a></div>
   </header>
   <main>
     <div class="gate" id="gate" hidden></div>
@@ -67,8 +67,8 @@
       <div class="foot">数据保存在 Supabase，只有登录账号可以查看。<br>笔记的英文原文可供批改——点「返回学习室」可进入学生视角。</div>
     </div>
   </main>
-  <script src="assets/supabase-config.js?v=20260825-t1"></script>
-  <script src="assets/cloud-sync.js?v=20260825-t1"></script>
+  <script src="assets/supabase-config.js?v=20260825-t2"></script>
+  <script src="assets/cloud-sync.js?v=20260825-t2"></script>
   <script>
     (function () {
       var $ = function (s) { return document.querySelector(s); };
@@ -102,13 +102,21 @@
       }
 
       function showLoginGate() {
-        gate('<div class="kicker">TEACHER VIEW</div><h1>请登录查看</h1>' +
-          '<p>登录共用的学习账号后，即可看到廖同学的完成进度、学习动态和全部笔记。</p>' +
-          '<button id="gateLogin">登录云同步</button>' +
-          '<div class="hint">账号见 SUPABASE_SETUP.md 第 3 步</div>');
+        gate('<div class="kicker">TEACHER VIEW</div><h1>请用老师账号登录</h1>' +
+          '<p>这个面板是老师专属视角，用于查看廖同学的完成进度、学习动态和全部笔记。</p>' +
+          '<button id="gateLogin">登录老师账号</button>' +
+          '<div class="hint">学生账号无法查看此面板</div>');
         $('#gateLogin').onclick = function () {
-          C.login().then(function () { if (C.isLoggedIn()) load(); });
+          C.login().then(function () { if (C.isLoggedIn()) boot(); });
         };
+      }
+
+      function showDeniedGate() {
+        gate('<div class="kicker">TEACHER VIEW</div><h1>此面板仅老师可用</h1>' +
+          '<p>当前登录的是学生账号（' + escapeHtml(C.email() || '未知') + '），无法查看老师面板。<br>要在这里查看，请退出后用老师账号登录。</p>' +
+          '<button id="gateSwitch">切换账号</button>' +
+          '<div class="hint"><a href="index.html" style="color:#5f82c8">← 回到我的学习室</a></div>');
+        $('#gateSwitch').onclick = function () { C.logout(); };
       }
 
       function render(stateRows, events) {
@@ -178,17 +186,20 @@
         if (!C.configured()) { showUnconfigured(); return; }
         C.ready().then(function () {
           if (!C.isLoggedIn()) { showLoginGate(); return; }
+          if (!C.isTeacher()) { showDeniedGate(); return; }
           load();
           setInterval(function () {
-            if (document.visibilityState === 'visible' && C.isLoggedIn()) load();
+            if (document.visibilityState === 'visible' && C.isLoggedIn() && C.isTeacher()) load();
           }, 60000);
         });
       }
 
       $('#refreshBtn').onclick = function () {
-        if (C.isLoggedIn()) load();
+        if (C.isLoggedIn() && C.isTeacher()) load();
         else boot();
       };
+
+      $('#logoutBtn').onclick = function () { C.logout(); };
 
       C.onStatus(function (s) {
         if (s === 'login' && !$('#gate').hidden === false) { /* keep current view */ }

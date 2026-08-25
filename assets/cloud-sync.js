@@ -388,7 +388,22 @@
   window.CloudSync = {
     ready: ready,
     login: function () { return waitLogin(false).then(function (ok) { return ok ? afterLogin() : null; }); },
+    logout: function () {
+      session = null;
+      localStorage.removeItem(LS_AUTH);
+      localStorage.removeItem(LS_SKIP);
+      setStatus('login');
+      location.reload();
+    },
     isLoggedIn: function () { return Boolean(session); },
+    email: function () {
+      if (session && session.user && session.user.email) return session.user.email;
+      return readJSON(LS_AUTH, {}).user_email || '';
+    },
+    isTeacher: function () {
+      var list = CFG.teacherEmails || [];
+      return list.indexOf(this.email()) >= 0;
+    },
     configured: configured,
     status: function () { return status; },
     onStatus: function (cb) { statusListeners.push(cb); },

@@ -31,7 +31,7 @@
       <div class="rail-head"><b>CONSTITUTIONAL LAW</b><span id="progressText">0 / 43</span></div>
       <input class="search" id="pageSearch" placeholder="搜索讲义内容…">
       <div class="page-list" id="pageList"></div>
-      <div class="rail-foot">讲义已转为结构化课程。原 PDF 只保留作内容校对，不再承担学习界面。<br><a href="teacher.html" style="color:#8fa3c8;text-decoration:none">老师查看学习面板 →</a></div>
+      <div class="rail-foot">讲义已转为结构化课程。原 PDF 只保留作内容校对，不再承担学习界面。<br><a id="teacherLink" href="teacher.html" style="color:#8fa3c8;text-decoration:none;display:none">老师查看学习面板 →</a></div>
     </aside>
     <main class="workspace">
       <header class="topbar"><button class="icon mobile-menu" id="openRail" aria-label="打开课程目录">☰</button><div class="breadcrumb"><b id="crumb">Day 01 · PDF 9</b><span>点击词语查释义，选择文本即可高亮或做笔记</span></div><div class="top-actions"><button class="pill" id="readPage">▶ 朗读本页</button><button class="pill primary" id="completePage">完成本页</button></div></header>
@@ -40,12 +40,14 @@
     <aside class="dock" id="dock"><div class="dock-head"><div class="dock-tabs"><button class="dock-tab active" data-dock="word">词典</button><button class="dock-tab" data-dock="notes">笔记</button><button class="dock-tab" data-dock="voice">语音</button></div><button class="icon close-dock" id="closeDock">×</button></div><div class="dock-body"><section class="dock-view active" id="wordView"><div class="word-empty">点击正文里的任意英文单词。<br>释义会直接出现在这里，不需要离开当前页。</div></section><section class="dock-view" id="notesView"><div id="notesList"></div></section><section class="dock-view" id="voiceView"><div class="voice-card"><span class="provider-tag">DEFAULT · MAINLAND API</span><b>MiniMax Speech 2.8</b><p>短句使用 Turbo，段落使用 HD。法律缩写会先校正，再逐句生成、边播边预取。</p><div class="voice-status" id="apiStatus">等待配置安全代理</div></div><div class="definition"><b>MiniMax 安全代理</b><p>这里只填写代理地址，API Key 必须保存在服务端，不能写进公开网页。</p><div class="api-row"><input id="apiEndpoint" placeholder="https://你的安全代理/tts"><button id="saveEndpoint">保存</button></div></div><div class="definition"><b>离线备用 · Kokoro</b><p>没有代理或网络异常时可使用。首次需下载约 86MB，之后会自动预热并缓存已生成音频。</p><button class="pill" id="loadVoice">加载离线语音</button><div class="voice-status" id="voiceStatus">尚未加载</div><div class="progress-track"><i id="voiceProgress"></i></div></div><p class="source">当前不会将密钥写入 GitHub。MiniMax 不可用时会自动切到本地语音。</p></section></div></aside>
   </div>
   <div class="selection-tools" id="selectionTools"><button data-select="listen">▶ 朗读</button><button data-select="highlight">高亮</button><button data-select="note">写笔记</button><button data-select="lookup">查词</button></div><div class="toast" id="toast">已保存</div>
-  <script src="assets/supabase-config.js?v=20260825-sync1"></script>
-  <script src="assets/cloud-sync.js?v=20260825-sync1"></script>
+  <script src="assets/supabase-config.js?v=20260825-sync2"></script>
+  <script src="assets/cloud-sync.js?v=20260825-sync2"></script>
   <script type="module">
     import {splitLegalSentences,normalizeLegalSpeech} from './assets/legal-speech.js?v=20260824-pilot1';
     const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
     if(window.CloudSync?.ready)await window.CloudSync.ready();
+    const syncTeacherLink=()=>{const el=document.getElementById("teacherLink");if(el&&window.CloudSync?.isTeacher?.())el.style.display="";};
+    syncTeacherLink();window.CloudSync?.onStatus?.(syncTeacherLink);
     const [course,dictionary]=await Promise.all([fetch("assets/course-content.json?v=20260824-pilot1").then(r=>r.json()),fetch("assets/course-dictionary.json?v=20260824-pilot1").then(r=>r.json())]);
     const TEST_PAGE=9,DEFAULT_API_ENDPOINT='https://1434356797-0sb9g9vb7b.ap-guangzhou.tencentscf.com/tts',studyPages=course.pages.filter(p=>p.page===TEST_PAGE),store=JSON.parse(localStorage.getItem("usbar-studio-v2")||"{}"),save=()=>{localStorage.setItem("usbar-studio-v2",JSON.stringify(store));window.dispatchEvent(new Event('usbar:save'))};
     store.page=TEST_PAGE;store.completed=store.completed||[];store.notes=store.notes||[];store.highlights=store.highlights||{};store.edits=store.edits||{};store.savedWords=store.savedWords||[];store.apiEndpoint=store.apiEndpoint||DEFAULT_API_ENDPOINT;
