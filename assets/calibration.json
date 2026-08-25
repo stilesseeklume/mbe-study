@@ -1,0 +1,61 @@
+{
+  "article": {
+    "text": "The Cases and Controversies Requirements set the threshold for federal court jurisdiction: Standing ensures the plaintiff has a concrete, personal stake in the outcome; Ripeness requires the dispute to be sufficiently developed (not hypothetical); Mootness bars cases where the issue has already been resolved; the Political Question Doctrine excludes disputes better suited for the legislative or executive branches (e.g., impeachment proceedings).\n\nStanding is the issue of whether the plaintiff is the proper party to bring a matter to the court for adjudication. The plaintiff must allege and prove that he or she has been injured or imminently will be injured (future injury). Plaintiffs only may assert injuries that they personally have suffered; plaintiffs seeking injunctive or declaratory relief must show a likelihood of future harm.\n\nDisney wanted to build a ski resort in Mineral King Valley. Sierra Club, a membership corporation with a special interest in the conservation and sound maintenance of the national parks, game refuges, and forests of the country, brought this suit for a declaratory judgment and an injunction to restrain federal officials from approving an extensive skiing development in the Mineral King Valley because they believed that the project would cause irreparable harm to the public interest.\n\nThe case was brought up to Supreme Court in the end, and the Supreme Court ruled that Sierra Club had alleged no legal interest in the case, because they failed to allege that any of their members had ever used Mineral King. Then, they sent some of the members to walk in the Mineral King and amended their allegations accordingly. Then the court said that they had standing, since they had alleged a personally suffered injury.",
+    "words": 279,
+    "reference": "Standing asks whether the plaintiff is the proper party: the plaintiff must allege a concrete, personal injury, may assert only injuries personally suffered, and, for injunctive or declaratory relief, must show a likelihood of future harm. In the Mineral King case, the Sierra Club initially lacked standing because it failed to allege that any member had personally used the valley; after members visited and the complaint was amended to allege a personally suffered injury, standing existed."
+  },
+  "comprehension": [
+    {
+      "q": "According to the article, what does the Mootness requirement bar?",
+      "options": [
+        "Disputes better suited for the legislative or executive branches",
+        "Cases brought by plaintiffs with no personal stake in the outcome",
+        "Cases where the issue has already been resolved",
+        "Hypothetical disputes that are not yet sufficiently developed"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "Why did the Supreme Court initially hold that the Sierra Club lacked standing?",
+      "options": [
+        "Because the Sierra Club was not a membership corporation",
+        "Because it failed to allege that any of its members had personally used Mineral King",
+        "Because the ski resort had already been built",
+        "Because the case raised a political question"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "What must a plaintiff seeking injunctive or declaratory relief show, according to the article?",
+      "options": [
+        "That other taxpayers support the claim",
+        "That the defendant is a federal official",
+        "An injury actually suffered by a third party",
+        "A likelihood of future harm"
+      ],
+      "answer": 3
+    }
+  ],
+  "vocab": [
+    { "word": "standing", "options": ["起立；站立的姿势", "持续时间；长期存在", "诉讼资格；原告适格", "社会身份地位"], "answer": 2 },
+    { "word": "mootness", "options": ["争议已决；案件失去实益", "模糊不清", "行动力", "次要性"], "answer": 0 },
+    { "word": "ripeness", "options": ["水果成熟度", "成熟性：争议时机已到、可以起诉", "老练圆滑", "完成状态"], "answer": 1 },
+    { "word": "bars", "options": ["酒吧；吧台", "条状物；栅栏", "律师界（the Bar）", "排除；禁止（进入法院）"], "answer": 3 },
+    { "word": "stake", "options": ["赌注；奖金", "木桩；标桩", "个人利害关系", "公司股份"], "answer": 2 },
+    { "word": "suits", "options": ["西装；套装", "诉讼；起诉", "适合（动词 suit）", "扑克同花"], "answer": 1 },
+    { "word": "allege", "options": ["（起诉状中）主张；诉称", "证明（已举证成立）", "承认；供认", "否认"], "answer": 0 },
+    { "word": "remedy", "options": ["药物；疗法", "纪念品", "修理房屋", "法律救济；补救手段"], "answer": 3 },
+    { "word": "injunction", "options": ["一般的命令；指令", "法院禁令（强制令）", "连接（junction）", "注入；插入"], "answer": 1 },
+    { "word": "sustained", "options": ["（上诉）维持原判；遭受（损害）", "持续的；持久的", "可支持的", "营养支持"], "answer": 0 },
+    { "word": "clause", "options": ["圣诞老人的别名", "语法从句", "（宪法/合同）条款", "爪子（claws）"], "answer": 2 },
+    { "word": "strike", "options": ["罢工", "打击；撞击", "时钟敲响", "（法院）撤销；裁定违宪"], "answer": 3 },
+    { "word": "expenditures", "options": ["经验（experience）", "（财政）支出", "扩张（expansion）", "期待（expectation）"], "answer": 1 },
+    { "word": "sue", "options": ["起诉；控告", "缝纫（sewing）", "跟随", "服从"], "answer": 0 },
+    { "word": "ripe", "options": ["成熟的（果实）", "成年", "熟练老练", "（争议）成熟可裁判的"], "answer": 3 },
+    { "word": "hardship", "options": ["硬件（hardware）", "生活艰难困苦（泛指）", "（当事人面临的）现实困境", "努力工作"], "answer": 2 },
+    { "word": "discharge", "options": ["（债务的）免除；清偿", "解雇；卸下", "排放污染物", "履行职责"], "answer": 0 },
+    { "word": "waiver", "options": ["波浪（wave）", "等待（wait）", "（权利的）放弃；弃权", "织布工（weaver）"], "answer": 2 },
+    { "word": "undue", "options": ["到期应付的", "过度的；不当的", "恰当适度的", "未分配的"], "answer": 1 },
+    { "word": "entertain", "options": ["娱乐表演", "招待客人", "怀有（想法）", "受理（诉讼）"], "answer": 3 }
+  ]
+}

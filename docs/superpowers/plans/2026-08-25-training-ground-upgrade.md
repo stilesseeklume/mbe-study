@@ -663,6 +663,8 @@ git add assets/review-engine.js assets/review.js tests/review-engine.test.mjs in
 - Create: `assets/calibration.json`
 - Create: `assets/calibrate.js`
 
+> **实施偏差记录（已完成）**：本地无 MINIMAX_API_KEY，校准素材人工撰写——article 取第 10 页 standing 规则+Sierra Club 案 7 段共 279 词（第 9 页为目录式概览，不适合"复述核心规则"），3 道理解题与 20 道法律义项题（正确义取 overlay legalTranslation，干扰义取词典通用义）人工编排，答案序号均衡分布（0-3 各 5 题）；生成脚本已就绪供后续重生成。计划代码两处修正：①向导容器改为懒挂载（原版 init 即全屏 append 会遮挡页面）；②重测按钮补 id=calibEntry。（verify-t10 全过：欢迎页入口/三步向导/防扫读门/中断恢复/profile 快速分支配置/4 周重测门）
+
 - [ ] **Step 1: 生成校准素材**
 
 `tools/gen-calibration.mjs`：从 course-content 第 9 页取 3 个连续 EN 段落（约 300 词）为 article；用 chatJSON 让 LLM 出 3 道四选一理解题 `{q,options:[4],answer:idx}`；再从 legal-overlay 全体词条抽 20 个多义法律词，每词出题 `{word, options:[正确法律义, 3个通用义/干扰义], answer:idx}`（干扰义取 dictionary.general translation）。输出 `assets/calibration.json` `{article:{text,words}, comprehension:[3], vocab:[20]}`。运行+抽查同 Task 7。
