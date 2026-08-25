@@ -203,6 +203,8 @@ async function putCachedSpeech(provider,model,text,blob,timestamps){const key=aw
 git add assets/speed-utils.js tests/speed-utils.test.mjs index.html && git commit -m "fix: 逐词高亮改用MiniMax时间戳，缓存携带时间戳"
 ```
 
+> **实施偏差记录（已验证）**：MiniMax 非流式响应不含内联 subtitles，仅返回 `data.subtitle_file`（OSS 签名 URL，带 `ACAO:*` 可浏览器直取）。实现为 `apiSpeech` 抓取该 URL 解析 `timestamped_words[{word,time_begin,time_end}]` 转 `{text,begin_time,end_time}`。原计划测试用例存在单位错误（秒/毫秒混用），`mapTimestamps` 实现已改为"段内分数插值 + 秒入参"，测试用例同步修正（5 用例全过）。
+
 ---
 
 ## Milestone 2 · 阅读层（中文按需 + 查词升级）
