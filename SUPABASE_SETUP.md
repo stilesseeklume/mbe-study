@@ -1,5 +1,8 @@
 # Supabase 云同步配置（约 5 分钟）
 
+> **✅ 2026-08-25 已配置完成，无需再操作。**
+> 项目：`usbar-study`（Singapore 区域）· 登录账号见下方第 3 步说明。
+
 配置后，廖同学的学习进度、笔记、生词会自动同步到云端，老师打开 `teacher.html` 就能看到全部动态——不再只存在她自己的浏览器里。
 
 ## 为什么用 Supabase
@@ -24,6 +27,8 @@
 3. 应显示 Success，左边 Tables 里出现 `study_state` 和 `study_events` 两张表
 
 ### 3. 建账号（老师和学生共用一个）
+
+> 当前已建好：邮箱 `liao@study.local`（密码 privately 告知廖同学即可）。
 
 1. 左侧 Authentication → Users → Add user → Create user
 2. 填邮箱（如 `liaostudy@example.com`）和密码（8 位以上）
