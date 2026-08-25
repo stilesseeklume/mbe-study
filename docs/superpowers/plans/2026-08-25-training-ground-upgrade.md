@@ -314,6 +314,8 @@ const note={word:base,page:store.page,count:(store.lookupLog[base]?.count||0)+1,
 git add tools/ assets/legal-overlay.json index.html && git commit -m "feat: 法律义项overlay优先+查词记录入review数据源"
 ```
 
+> **实施偏差记录（已完成）**：本地无 MINIMAX_API_KEY，试运行页 9–16 的 overlay 词条改为人工撰写（每页 10 词，含 display/phonetic/legalTranslation/legalNote/generalTrap），7–8 页为目录页无需覆盖；showWord 渲染在计划基础上增加"通用义陷阱"独立块与动态 PAGE 编号标签，`lookupLog` 按计划落地（Playwright verify-t5 全过）。全开 51 页时再跑 `tools/gen-legal-overlay.mjs` 补齐。
+
 ---
 
 ## Milestone 3 · AI 批改管线 + 复述
@@ -434,6 +436,8 @@ Run: `node tools/gen-retell-tasks.mjs 1 20 && node tools/gen-retell-tasks.mjs 21
 ```bash
 git add tools/gen-retell-tasks.mjs assets/retell-tasks.json && git commit -m "feat: 51页复述任务素材(153条)预生成"
 ```
+
+> **实施偏差记录（已完成）**：同 overlay，试运行页 9–16 的 24 条复述任务人工撰写；生成脚本已就绪供全开时使用。T8 修正两处计划问题：①tasks 需按当前页动态读取（原版在 init 时捕获一次，切页不刷新）；②完成门检对无任务页（7–8 目录页）放行，否则目录页永远无法标记完成。批改不可用时保存草稿+提示重试（本地经 server/mock-grader.mjs 端到端验证全过）。
 
 ### Task 8: 复述 UI + 完成绑定 + 事件
 
