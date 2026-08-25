@@ -1,0 +1,42 @@
+{
+ "9": [
+  {"concept":"Constitutional Law on the MBE","prompt":"Describe in your own words what Constitutional Law tests on the bar exam and why precedents matter.","reference":"interpreting the U.S. Constitution, disputes over governmental powers and individual rights, landmark Supreme Court cases, applying case precedents to hypothetical scenarios"},
+  {"concept":"Judicial Review (Marbury v. Madison)","prompt":"Explain what judicial review is and which case established it.","reference":"power to declare governmental acts unconstitutional, Marbury v. Madison, Supreme Court interprets the Constitution"},
+  {"concept":"Scope of the Federal Judicial Power","prompt":"Summarize what the federal judicial power domain covers and the core question it asks about a case.","reference":"scope of federal courts' authority, justiciability (standing, ripeness, mootness), jurisdictional limits, political question doctrine, whether a federal court can hear the case"}
+ ],
+ "10": [
+  {"concept":"Cases and Controversies Requirement","prompt":"Restate the Article III threshold for federal court jurisdiction and name its main components.","reference":"Article III cases and controversies, threshold for federal jurisdiction, standing, ripeness, mootness, political question doctrine"},
+  {"concept":"Standing","prompt":"Explain what standing requires of a plaintiff and why it exists as a threshold rule.","reference":"concrete personal stake in the outcome, proper plaintiff, threshold requirement, ensures adverse parties and concrete dispute"},
+  {"concept":"Injury in Fact","prompt":"Describe the injury element of standing, including what kind of injury counts.","reference":"concrete and particularized, actual or imminent injury, not hypothetical or generalized, past wrongs alone usually insufficient for forward-looking relief"}
+ ],
+ "11": [
+  {"concept":"Past Injury and Injunctive Relief (City of Lyons)","prompt":"Restate why past illegal conduct by itself does not support an injunction.","reference":"past illegal conduct insufficient, need likelihood of future immediate injury, actual case or controversy under Article III, damages may still be available"},
+  {"concept":"Causation and Redressability","prompt":"Explain the two remaining elements of standing a plaintiff must allege and prove after injury.","reference":"defendant caused the injury (causation/traceability), favorable decision likely to remedy the injury (redressability), must allege and prove"},
+  {"concept":"No Third-Party Standing","prompt":"State the rule against asserting someone else's legal rights in court.","reference":"plaintiff generally cannot assert rights of third parties, must assert own legal rights, narrow exceptions exist"}
+ ],
+ "12": [
+  {"concept":"Taxpayer Standing (Flast v. Cohen)","prompt":"Restate the two requirements a federal taxpayer must show to have standing under Flast.","reference":"logical link (nexus) between taxpayer status and the enactment attacked, connection to a specific constitutional limit on taxing and spending power, Establishment Clause example"},
+  {"concept":"Standing as Personal Stake","prompt":"Explain in plain terms what standing means for the parties under Flast.","reference":"personal stake in the outcome, real interest in the dispute, Article III court requirement"},
+  {"concept":"Limits of Taxpayer Standing","prompt":"Describe when taxpayers lack standing to challenge how the government spends or grants money.","reference":"no standing to challenge ordinary government grants or expenditures, spending must exceed a specific constitutional limit on taxing and spending, mere payment of taxes insufficient"}
+ ],
+ "13": [
+  {"concept":"Ripeness (Fitness and Hardship)","prompt":"Restate the two factors courts weigh in deciding whether an issue is ripe.","reference":"fitness of the issues for judicial decision, hardship to the parties if review is withheld, purely legal issues more likely fit, direct day-to-day impact on operations"},
+  {"concept":"Pre-enforcement Review","prompt":"Explain when a regulated party may challenge a new rule in court before it is enforced against them.","reference":"pre-enforcement review, declaratory judgment, regulation adopted but not yet applied, hardship of compliance costs or risk of prosecution"},
+  {"concept":"Mootness and Its Exception (Roe v. Wade)","prompt":"State the mootness rule and explain why the claim in Roe survived even though pregnancy ends.","reference":"case moot when issue is resolved, exception for wrongs capable of repetition yet evading review, pregnancy shorter than litigation"}
+ ],
+ "14": [
+  {"concept":"Political Question Doctrine","prompt":"Define the political question doctrine in your own words.","reference":"constitutional violations federal courts will not adjudicate, committed to political branches, dismissed as non-justiciable"},
+  {"concept":"Guarantee Clause Challenges","prompt":"State how courts treat challenges to a state's form of government.","reference":"republican form of government, Article IV Section 4 Guarantee Clause, non-justiciable political question, dismissed"},
+  {"concept":"Presidential Foreign Policy (Goldwater v. Carter)","prompt":"Explain why the challenge to President Carter's rescission of a treaty was dismissed.","reference":"President's conduct of foreign policy, political question, Senate approves making of treaties, Goldwater v. Carter, dismissal"}
+ ],
+ "15": [
+  {"concept":"Independent and Adequate State Grounds","prompt":"Restate why the Supreme Court refused to hear the pollution injunction case.","reference":"state law ground independent and adequate to support the judgment, Supreme Court review would be pointless, outcome rests on state law regardless of federal ruling"},
+  {"concept":"State Grounds in Practice","prompt":"Explain when the Supreme Court will decline to review a state supreme court decision.","reference":"state supreme court judgment, adequate and independent state law basis, no need to decide the federal question, Supreme Court declines review"},
+  {"concept":"Parallel Federal and State Claims","prompt":"Describe what happens when a plaintiff wins on both a federal and a state theory and the defendant appeals.","reference":"relief supported by either federal or state law, both grounds independently support the judgment, state ground adequate, no Supreme Court review"}
+ ],
+ "16": [
+  {"concept":"State Sovereign Immunity","prompt":"State the general rule of state sovereign immunity and the exceptions covered on this page.","reference":"states immune from private suits in federal court, Eleventh Amendment, Congress may abrogate under Section 5 of the 14th Amendment, federal government may sue a state, bankruptcy proceedings not barred"},
+  {"concept":"Limits on Congressional Abrogation","prompt":"Explain why the Age Discrimination in Employment Act could not support suits against state governments.","reference":"ADEA enacted under Commerce Clause power, abrogation requires Section 5 of the 14th Amendment enforcement power, Commerce Clause insufficient"},
+  {"concept":"Bankruptcy Power (Tennessee v. Hood)","prompt":"Restate the holding about state sovereign immunity in bankruptcy under Hood.","reference":"bankruptcy power, Eleventh Amendment does not bar bankruptcy court proceedings, Hood, state-created lending institution as creditor"}
+ ]
+}
