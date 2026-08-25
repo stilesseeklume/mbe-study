@@ -7,6 +7,6 @@
  * 5. git commit + push，刷新网站，左下角点「登录云同步」
  */
 window.SUPABASE_CONFIG = {
-  url: "",      // 例如 "https://abcd1234.supabase.co"
-  anonKey: ""   // Project Settings → API → Project API keys → anon public
+  url: "https://qaumimcqynhsqaqthaih.supabase.co",
+  anonKey: "sb_publishable_3kP9mw_D6Y8S4D2mmsZaTQ__ZOKcBeh"
 };

@@ -23,11 +23,10 @@ alter table public.study_events enable row level security;
 drop policy if exists "study_state read"   on public.study_state;
 drop policy if exists "study_state write"  on public.study_state;
 create policy "study_state read"  on public.study_state for select to authenticated using (true);
-create policy "study_state write" on public.study_state for insert to authenticated with check (true);
-create policy "study_state write" on public.study_state for update to authenticated using (true) with check (true);
+create policy "study_state write" on public.study_state for all to authenticated using (true) with check (true);
 
 drop policy if exists "study_events read"  on public.study_events;
 drop policy if exists "study_events write" on public.study_events;
 create policy "study_events read"  on public.study_events for select to authenticated using (true);
-create policy "study_events write" on public.study_events for insert to authenticated with check (true);
+create policy "study_events write" on public.study_events for all to authenticated using (true) with check (true);
 -- study_events 故意不给 update/delete 权限：动态记录不可篡改
