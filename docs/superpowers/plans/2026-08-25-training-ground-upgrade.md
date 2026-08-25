@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** 把单页试学阅读器升级为 51 页全课程的"训练场"：复述驱动输出 + AI 批改 + 三源复习队列 + 校准/限时阅读/音频循环 + 学生成长面板与老师过程面板。
+**Goal:** 把单页试学阅读器升级为"训练场"：复述驱动输出 + AI 批改 + 三源复习队列 + 校准/限时阅读/音频循环 + 学生成长面板与老师过程面板。**上线策略（用户已确认）：先试运行开放第 7–16 页（宪法第一章前段 10 页），跑 1–2 周后由老师看数据（复述完成率/复习到期完成率/学生反馈）手动决定全开；全开 = 改一行页面区间配置。UI 原则：不改动欢迎页图片与首屏视觉，新功能全部沿用现有设计语言做加法。**
 
 **Architecture:** 纯静态站（GitHub Pages）不变；新功能拆成独立 ES module（retell/review/calibrate/reading/badges），index.html 作为编排器传入共享上下文 `App`；纯逻辑（SM-2 调度、wpm 计算、时间戳映射）提取为可 node:test 的纯模块；AI 批改经腾讯 SCF 上的 MiniMax 代理新增 `action:'grade'` 路由（零网关改动）；素材（复述任务/法律义项覆盖/校准题）由 tools/ 下的一次性生成脚本调 LLM 批量产出、人工抽查后静态化。
 
@@ -23,14 +23,14 @@
 
 ---
 
-## Milestone 0 · 地基（解锁全课程 + 状态键）
+## Milestone 0 · 地基（试运行章节解锁 + 状态键）
 
-### Task 1: 解锁全部 51 页
+### Task 1: 试运行解锁第 7–16 页（全开=改一行配置）
 
 **Files:**
-- Modify: `index.html`（第 52、53、81、90 行附近）
+- Modify: `index.html`（第 52、53、82、90 行附近）
 
-- [ ] **Step 1: 放开页面过滤**
+- [ ] **Step 1: 页面过滤改为区间常量**
 
 index.html 第 52 行：
 ```js
@@ -38,9 +38,9 @@ const TEST_PAGE=9,...,studyPages=course.pages.filter(p=>p.page===TEST_PAGE),...
 ```
 改为：
 ```js
-const studyPages=course.pages,...
+const OPEN_FROM=7,OPEN_TO=16,...,studyPages=course.pages.filter(p=>p.page>=OPEN_FROM&&p.page<=OPEN_TO),...
 ```
-删除 `TEST_PAGE` 常量；同页 `store.page=TEST_PAGE` 改为 `store.page=store.page||course.pages[0].page`。
+删除 `TEST_PAGE` 常量；同页 `store.page=TEST_PAGE` 改为 `store.page=studyPages.some(p=>p.page===store.page)?store.page:studyPages[0].page`（持久化页码；若存储页码不在解锁区间内则回落首页——将来全开时旧页码自然保留）。
 
 - [ ] **Step 2: 页列表渲染全部页**
 
@@ -52,12 +52,12 @@ const studyPages=course.pages,...
 
 - [ ] **Step 4: 浏览器验证**
 
-Run: 起本地服务，浏览器打开，断言：左侧列表 51 项；点第 20 页主区切换；刷新后停留第 20 页（store.page 持久化）；`legalTitles` 之外的页显示英文首标题。
+Run: 起本地服务，浏览器打开，断言：左侧列表 10 项（P07–P16）；点第 12 页主区切换；刷新后停留第 12 页（store.page 持久化）；localStorage 里页码为 20（区间外）时回落到第 7 页；`legalTitles` 之外的页显示英文首标题。
 
 - [ ] **Step 5: Commit**
 
 ```bash
-git add index.html && git commit -m "feat: 解锁全部51页讲义，页面选择持久化"
+git add index.html && git commit -m "feat: 试运行解锁宪法第一章7-16页，页码持久化"
 ```
 
 ### Task 2: 新状态键 + App 上下文（所有后续任务的地基）
@@ -936,6 +936,7 @@ T1 解锁51页 ─┬─ T2 状态键/App ─┬─ T3 TTS修复 ── T11 三�
 
 ## 风险与对策
 
+- **全开时机与标准（用户已确认流程）**：试运行 1–2 周后老师查看三信号——复述完成率（目标 ≥70%）、复习到期完成率（目标 ≥60%）、学生主观反馈；达标即把 `OPEN_FROM=1,OPEN_TO=51` 一行改动推上线（第 1–6 页为封面/目录，可顺带开放或保持关闭，由老师定）。
 - **SCF 部署需用户协助**：Task 6 Step 3 若浏览器操作腾讯控制台受阻，先本地验证代码正确性，请用户粘贴部署（3 分钟），再继续 Step 4。
 - **LLM 生成素材质量**：Task 5/7/10 都有人工抽查质量门，不合格重跑该页；生成脚本按页幂等（重跑覆盖）。
 - **MiniMax chat 模型名**：`GRADING_MODEL` 可换（DeepSeek 需另改 BASE/鉴权，本计划不做）。
