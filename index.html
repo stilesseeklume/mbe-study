@@ -117,7 +117,8 @@
     if(localStorage.getItem('usbar-kokoro-enabled')==='1'&&!store.apiEndpoint)setTimeout(()=>initKokoro(false),1200);
     $("#readPage").onclick=()=>{const page=studyPages.find(p=>p.page===store.page),timelineIndex=page.blocks.findIndex(b=>b.id==='p9-b34'),visibleBlocks=timelineIndex<0?page.blocks:page.blocks.slice(0,timelineIndex),text=visibleBlocks.filter(b=>b.lang==='en').map(b=>store.edits[b.id]||b.text).join('\n');speak(text)};
     $("#completePage").onclick=()=>{store.completed=store.completed.includes(store.page)?store.completed.filter(p=>p!==store.page):[...store.completed,store.page];save();renderAll();toast(store.completed.includes(store.page)?'这一页已完成':'已取消完成')};
-    const App={store,save,toast,course,dictionary,studyPages,$,$$,speak,openDock,renderDocument,renderAll,showWord,grade:null,completeGate:null};
+    const App={store,save,toast,course,dictionary,studyPages,$,$$,speak,openDock,renderDocument,renderAll,showWord,completeGate:null,
+      grade:async payload=>{const r=await fetch(store.apiEndpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'grade',...payload})});const data=await r.json().catch(()=>({}));if(!r.ok)throw Error(data.error||`grade ${r.status}`);return data.feedback}};
     window.App=App;window.dispatchEvent(new CustomEvent('usbar:app',{detail:App}));
     window.usbarRegister=fn=>{try{fn(App)}catch(e){console.warn('module init failed',e)}};
     renderAll();
